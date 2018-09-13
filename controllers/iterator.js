@@ -8,8 +8,22 @@
 //  Dependencies
 // ===========================================================================
     
-    var ArrayIterator = require('es6-iterator/array')
-
+// var ArrayIterator = require('es6-iterator/array')
+class ArrayIterator {
+  constructor(d) {
+    this.data=d;
+    this.index=0;
+  }
+  [Symbol.iterator]() {
+    return this;
+  }
+  next() {
+    if (this.index < this.data.length) {
+     return { value: this.data[this.index++], done: false };
+    }
+    return { value: undefined, done: true };
+  }
+}
 // ===========================================================================
 //  Dependencies
 // ===========================================================================
