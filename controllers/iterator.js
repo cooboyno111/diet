@@ -9,21 +9,21 @@
 // ===========================================================================
     
 // var ArrayIterator = require('es6-iterator/array')
-class ArrayIterator {
-  constructor(d) {
-    this.data=d;
-    this.index=0;
-  }
-  [Symbol.iterator]() {
-    return this;
-  }
-  next() {
-    if (this.index < this.data.length) {
-     return { value: this.data[this.index++], done: false };
+var ArrayIterator = (function () {
+    function ArrayIterator(array) {
+        this.data = array;
+        this.index = 0;
     }
-    return { value: undefined, done: true };
-  }
-}
+    ArrayIterator.prototype.next = function () {
+        console.log("length="+this.data.length);
+        console.log("index="+this.index);
+        if (this.index < this.data.length) {
+            return { value: this.data[this.index++], done: false };
+        }
+        return { value: undefined, done: true };
+    };
+    return ArrayIterator;
+}());
 // ===========================================================================
 //  Dependencies
 // ===========================================================================
