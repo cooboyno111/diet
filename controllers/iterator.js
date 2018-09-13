@@ -15,8 +15,6 @@ var ArrayIterator = (function () {
         this.index = 0;
     }
     ArrayIterator.prototype.next = function () {
-        console.log("length="+this.data.length);
-        console.log("index="+this.index);
         if (this.index < this.data.length) {
             return { value: this.data[this.index++], done: false };
         }
